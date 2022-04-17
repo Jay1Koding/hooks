@@ -145,6 +145,48 @@ export default App;
 
 # useEffect
 
+- componentDidMount 과 componentDidUpdate 의 역할
+- 1번 째 인자는 함수, 2번 째 인자는 배열(dependencies)을 받음
+- 컴포넌트가 mount 된 뒤 아무것도 실행시키고 싶지 않으면 [] 빈 deps를 보내면 됨
+- useEffect로부터 function이 리턴됨 - componentWillUnmount
+
+```javascript
+import React, { useEffect, useState } from 'react';
+import './styles.css';
+
+const App = () => {
+  const sayHello = () => {
+    console.log('hello');
+  };
+  useEffect(() => {
+    sayHello();
+  });
+  const [number, setNumber] = useState(0);
+  const [aNumber, setAnumber] = useState(0);
+  return (
+    <div className='App'>
+      <h1>Hello</h1>
+      <button
+        onClick={() => {
+          setNumber(number + 1);
+        }}
+      >
+        {number}
+      </button>
+      <button
+        onClick={() => {
+          setAnumber(aNumber + 1);
+        }}
+      >
+        {aNumber}
+      </button>
+    </div>
+  );
+};
+
+export default App;
+```
+
 ## useTitle
 
 - react document의 title을 몇 개의 hooks와 함께 바꿈
